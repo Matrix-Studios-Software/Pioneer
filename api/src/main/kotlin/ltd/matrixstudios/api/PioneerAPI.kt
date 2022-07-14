@@ -3,6 +3,7 @@ package ltd.matrixstudios.api
 import ltd.matrixstudios.api.auth.AuthSessionManager
 import ltd.matrixstudios.api.profiles.ProfileManager
 import ltd.matrixstudios.api.ranks.RankManager
+import ltd.matrixstudios.api.tags.TagManager
 import spark.kotlin.ipAddress
 import spark.kotlin.port
 
@@ -27,6 +28,7 @@ class PioneerAPI {
             PioneerRouter.setupExceptionHandling()
 
             RankManager.load()
+            TagManager.load()
         }
     }
 

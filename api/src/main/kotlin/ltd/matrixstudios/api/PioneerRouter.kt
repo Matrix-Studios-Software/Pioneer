@@ -6,6 +6,7 @@ import ltd.matrixstudios.api.grants.GrantRouting
 import ltd.matrixstudios.api.profiles.ProfileRouting
 import ltd.matrixstudios.api.ranks.RankRouting
 import ltd.matrixstudios.api.serializers.JsonTransformer
+import ltd.matrixstudios.api.tags.TagRouting
 import spark.Request
 import spark.Response
 import spark.ResponseTransformer
@@ -44,6 +45,14 @@ object PioneerRouter {
             {
                 post("/addTo/:id", GrantRouting.addTo, jsonTransformer)
                 get("/getByTarget/:id", GrantRouting.getByTarget, jsonTransformer)
+            }
+
+            path("/tags")
+            {
+                post("/make/:id", TagRouting.make, jsonTransformer)
+                post("/squash/:id", TagRouting.squash, jsonTransformer)
+                get("/fetch", TagRouting.fetch, jsonTransformer)
+                get("/fetchWithId/:id", TagRouting.fetchWithId, jsonTransformer)
             }
         }
 
