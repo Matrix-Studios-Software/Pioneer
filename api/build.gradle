@@ -1,0 +1,12 @@
+
+dependencies {
+    implementation 'com.sparkjava:spark-kotlin:1.0.0-alpha'
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'ltd.matrixstudios.api.PioneerAPI'
+        )
+    }
+}

@@ -1,0 +1,5 @@
+name: Pioneer
+description: An API based rank core with blazing fast speeds and efficiency
+version: beta/1.1
+author: Matrix Studios Software
+main: ltd.matrixstudios.bukkit.PioneerBukkit
