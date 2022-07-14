@@ -19,6 +19,8 @@ import ltd.matrixstudios.bukkit.ranks.Rank
 import ltd.matrixstudios.bukkit.ranks.RankHandler
 import ltd.matrixstudios.bukkit.ranks.RankService
 import ltd.matrixstudios.bukkit.ranks.commands.RankCommands
+import ltd.matrixstudios.bukkit.tags.TagService
+import ltd.matrixstudios.bukkit.tags.commands.TagCommands
 import ltd.matrixstudios.bukkit.utils.menu.listener.MenuListener
 import okhttp3.OkHttpClient
 import org.bukkit.plugin.java.JavaPlugin
@@ -43,6 +45,7 @@ class PioneerBukkit : JavaPlugin() {
     lateinit var rankService: RankService
     lateinit var profileService: ProfileService
     lateinit var grantService: GrantService
+    lateinit var tagService: TagService
 
     companion object
     {
@@ -81,6 +84,7 @@ class PioneerBukkit : JavaPlugin() {
             this.registerCommand(RankCommands())
             this.registerCommand(CGrantCommand())
             this.registerCommand(GrantsCommand())
+            this.registerCommand(TagCommands())
         }
     }
 
@@ -94,5 +98,6 @@ class PioneerBukkit : JavaPlugin() {
         rankService = retrofit.create(RankService::class.java)
         profileService = retrofit.create(ProfileService::class.java)
         grantService = retrofit.create(GrantService::class.java)
+        tagService = retrofit.create(TagService::class.java)
     }
 }
