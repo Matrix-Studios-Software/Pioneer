@@ -41,6 +41,9 @@ object PubSubHandler {
 
     /**
      * Publishes a message to a channel
+     *
+     * @param [packet] The packet to publish
+     * @param [channel] The channel to send the packet to. It should be formatted as "Pioneer::<channel name>"
      */
     fun publish(packet: JedisPacket, channel: String = "Pioneer::Global") {
         val s = java.lang.StringBuilder(packet.javaClass.name)

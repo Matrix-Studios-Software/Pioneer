@@ -6,8 +6,12 @@ import ltd.matrixstudios.bukkit.pubsub.packet.JedisPacket
 import org.bukkit.Bukkit
 import redis.clients.jedis.JedisPubSub
 
+/**
+ * @author Nopox
+ * @since 2022-07-13
+ */
 object PubSubListener : JedisPubSub() {
-
+    
     override fun onMessage(channel: String, message: String) {
         val messageSpliced = message.split("::")
 
