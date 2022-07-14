@@ -12,7 +12,7 @@ object RankRouting {
     }
 
     val fetchWithId = Route { request, response ->
-        val id = request.params(":id")
+        val id = request.params(":id").toLowerCase()
 
         if (RankManager.rankById(id) == null)
         {

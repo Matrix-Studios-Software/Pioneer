@@ -2,6 +2,7 @@ package ltd.matrixstudios.api
 
 import ltd.matrixstudios.api.auth.AuthSession
 import ltd.matrixstudios.api.auth.AuthSessionManager
+import ltd.matrixstudios.api.grants.GrantRouting
 import ltd.matrixstudios.api.profiles.ProfileRouting
 import ltd.matrixstudios.api.ranks.RankRouting
 import ltd.matrixstudios.api.serializers.JsonTransformer
@@ -37,6 +38,12 @@ object PioneerRouter {
                 get("/fetch", ProfileRouting.fetch, jsonTransformer)
                 post("/squash/:id", ProfileRouting.squash, jsonTransformer)
                 get("/byUUID/:id", ProfileRouting.byUUID, jsonTransformer)
+            }
+
+            path("/grants")
+            {
+                post("/addTo/:id", GrantRouting.addTo, jsonTransformer)
+                get("/getByTarget/:id", GrantRouting.getByTarget, jsonTransformer)
             }
         }
 

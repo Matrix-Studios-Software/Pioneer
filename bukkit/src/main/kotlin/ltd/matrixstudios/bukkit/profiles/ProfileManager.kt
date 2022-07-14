@@ -9,10 +9,39 @@ object ProfileManager {
 
     val profiles = hashMapOf<UUID, Profile>()
 
+    fun get(uuid: UUID) : Profile?
+    {
+        if (isInCache(uuid))
+        {
+            return profiles[uuid]
+        }
+
+        val profile = PioneerBukkit.instance.profileService.byUUID(uuid.toString()).execute()
+
+        if (profile.isSuccessful && profile.body() != null)
+        {
+            return profile.body()!!
+        }
+
+        return null
+    }
 
     fun isInCache(id: UUID) : Boolean
     {
         return profiles.containsKey(id)
+    }
+
+    fun byName(name: String) : Profile?
+    {
+        val fetch = PioneerBukkit.instance.profileService.fetch().execute()
+
+        if (fetch.isSuccessful && fetch.body() != null)
+        {
+            val profile = fetch.body()!!.firstOrNull { it.username == name }
+
+            return profile
+        }
+        return null
     }
 
     fun load(uuid: UUID, username: String)

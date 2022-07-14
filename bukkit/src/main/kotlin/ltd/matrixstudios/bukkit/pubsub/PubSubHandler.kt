@@ -27,11 +27,13 @@ object PubSubHandler {
      * @param [pool] The JedisPool to use for the PubSubHandler
      */
     fun create(pool: JedisPool, vararg channels: String) {
+
         jedisPool = pool
 
         val pubSub = PubSubListener
 
-        while (true) {
+        while (true)
+        {
             jedisPool.resource.use {
                 it.subscribe(pubSub, *channels)
                 it.subscribe(pubSub, "Pioneer::Global")
@@ -42,7 +44,8 @@ object PubSubHandler {
     /**
      * Publishes a message to a channel
      */
-    fun publish(packet: JedisPacket, channel: String = "Pioneer::Global") {
+    fun publish(packet: JedisPacket, channel: String = "Pioneer::Global")
+    {
         val s = java.lang.StringBuilder(packet.javaClass.name)
 
         val serializedPacket = GSON.toJson(packet)
@@ -59,7 +62,8 @@ object PubSubHandler {
      *
      * @param [packet] The packet to handle
      */
-    fun handle(packet: JedisPacket) {
+    fun handle(packet: JedisPacket)
+    {
         packet.onMessage()
     }
 }
