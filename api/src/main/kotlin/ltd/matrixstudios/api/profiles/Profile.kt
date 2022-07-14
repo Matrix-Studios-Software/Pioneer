@@ -9,6 +9,7 @@ data class Profile(
     val friends: MutableList<String>,
     val firstJoined: Long,
     val lastJoined: Long,
-    val cacheExpiry: Long
+    val cacheExpiry: Long,
+    val activeTag: String
 ) {
 }
